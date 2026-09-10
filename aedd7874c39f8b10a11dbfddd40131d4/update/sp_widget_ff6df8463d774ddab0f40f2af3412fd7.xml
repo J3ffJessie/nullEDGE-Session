@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function () {
+    var c = this;
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_782668_sp_widget_my_open_requests</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>My Open Requests</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+    data.items = [];
+    var gr = new GlideRecord('sc_req_item');
+    gr.addQuery('requested_for', gs.getUserID());
+    gr.addQuery('active', true);
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+        data.items.push({
+            number: gr.getValue('number'),
+            short_description: gr.getValue('short_description') + '',
+            stage: gr.getValue('stage') + ''
+        });
+    }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 15:08:54</sys_created_on>
+        <sys_id>ff6df8463d774ddab0f40f2af3412fd7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>My Open Requests</sys_name>
+        <sys_package display_value="SP Widget Traps" source="x_782668_sp_widget">aedd7874c39f8b10a11dbfddd40131d4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SP Widget Traps">aedd7874c39f8b10a11dbfddd40131d4</sys_scope>
+        <sys_update_name>sp_widget_ff6df8463d774ddab0f40f2af3412fd7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 15:08:54</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">My Open Requests</h3>
+  </div>
+  <div class="panel-body">
+    <div ng-if="c.data.items.length === 0" class="text-center text-muted">
+      <i class="fa fa-inbox fa-2x"></i>
+      <p>No open requests found</p>
+    </div>
+    <table class="table table-striped" ng-if="c.data.items.length > 0">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Short Description</th>
+          <th>Stage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in c.data.items track by $index">
+          <td>{{item.number}}</td>
+          <td>{{item.short_description}}</td>
+          <td>{{item.stage}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

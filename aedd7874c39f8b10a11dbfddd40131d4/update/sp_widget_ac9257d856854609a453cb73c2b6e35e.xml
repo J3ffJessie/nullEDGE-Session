@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function () {
+    var c = this;
+
+    if (c.data.request_state && !c.data.requestState) {
+        c.data.requestState = c.data.request_state;
+    }
+};
+]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>x_782668_sp_widget_request_status</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>Request Status</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function () {
+    var sysId = $sp.getParameter('sysparm_id');
+    data.short_description = '';
+    data.request_state = '';
+
+    if (sysId) {
+        var gr = new GlideRecord('sc_request');
+        gr.addQuery('sys_id', sysId);
+        gr.setLimit(1);
+        gr.query();
+        if (gr.next()) {
+            data.short_description = gr.getValue('short_description') + '';
+            data.request_state = gr.getDisplayValue('request_state') + '';
+        }
+    }
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 15:08:54</sys_created_on>
+        <sys_id>ac9257d856854609a453cb73c2b6e35e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Request Status</sys_name>
+        <sys_package display_value="SP Widget Traps" source="x_782668_sp_widget">aedd7874c39f8b10a11dbfddd40131d4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SP Widget Traps">aedd7874c39f8b10a11dbfddd40131d4</sys_scope>
+        <sys_update_name>sp_widget_ac9257d856854609a453cb73c2b6e35e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 15:20:37</sys_updated_on>
+        <template><![CDATA[<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Request Status</h3>
+  </div>
+  <div class="panel-body">
+    <div ng-if="!c.data.short_description" class="text-center text-muted">
+      <i class="fa fa-search fa-2x"></i>
+      <p>No request loaded. Pass sysparm_id in the URL.</p>
+    </div>
+    <div ng-if="c.data.short_description">
+      <dl class="dl-horizontal">
+        <dt>Description</dt>
+        <dd>{{c.data.short_description}}</dd>
+        <dt>State</dt>
+        <dd>{{c.data.requestState}}</dd>
+      </dl>
+      <p>
+        {{c.data | json}}
+      </p>
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

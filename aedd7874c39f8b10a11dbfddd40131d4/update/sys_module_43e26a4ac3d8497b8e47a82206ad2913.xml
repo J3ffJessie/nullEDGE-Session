@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_module">
+    <sys_module action="INSERT_OR_UPDATE">
+        <content><![CDATA[{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:06abe825-a238-4eb9-a075-3f5675b5799e",
+  "metadata": {
+    "timestamp": "2026-09-10T15:08:10.048Z",
+    "tools": {
+      "components": [
+        {
+          "type": "library",
+          "name": "sdk-build-plugins",
+          "group": "@servicenow",
+          "version": "4.11.2",
+          "author": "ServiceNow"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "x-782668-sp-widget-traps",
+      "version": "1.0.0",
+      "bom-ref": "pkg:servicenow/x-782668-sp-widget-traps@1.0.0?sys_scope_id=aedd7874c39f8b10a11dbfddd40131d4",
+      "description": "[BUILD AGENT GENERATED]:  A Service Portal demo application with intentionally broken widgets for conference troubleshooting training sessions.",
+      "licenses": [
+        {
+          "license": {
+            "name": "UNLICENSED"
+          }
+        }
+      ],
+      "purl": "pkg:servicenow/x-782668-sp-widget-traps@1.0.0?sys_scope_id=aedd7874c39f8b10a11dbfddd40131d4"
+    }
+  },
+  "components": [],
+  "dependencies": [
+    {
+      "ref": "pkg:servicenow/x-782668-sp-widget-traps@1.0.0?sys_scope_id=aedd7874c39f8b10a11dbfddd40131d4"
+    }
+  ]
+}]]></content>
+        <external_source>false</external_source>
+        <path>x_782668_sp_widget/x-782668-sp-widget-traps/1.0.0/bom.json</path>
+        <sys_class_name>sys_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 15:08:54</sys_created_on>
+        <sys_id>43e26a4ac3d8497b8e47a82206ad2913</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_782668_sp_widget/x-782668-sp-widget-traps/1.0.0/bom.json</sys_name>
+        <sys_package display_value="SP Widget Traps" source="x_782668_sp_widget">aedd7874c39f8b10a11dbfddd40131d4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SP Widget Traps">aedd7874c39f8b10a11dbfddd40131d4</sys_scope>
+        <sys_update_name>sys_module_43e26a4ac3d8497b8e47a82206ad2913</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 15:08:54</sys_updated_on>
+    </sys_module>
+</record_update>
